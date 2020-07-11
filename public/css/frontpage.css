@@ -1,7 +1,15 @@
+body{
+    background-image: url(../img/gradienta-LeG68PrXA6Y-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 nav .derecha{
     display: inline-block;
     justify-content: right;
 }
+
 nav ul li a{
     text-decoration: none;
     color: #fff;
@@ -12,8 +20,6 @@ nav ul li a:hover{
     text-decoration: none;
     color: #fff;
 }
-
-
 
 .btn{
     background: #3b6978;
@@ -32,4 +38,28 @@ nav ul li a:hover{
     font-family: 'Coda Caption', sans-serif;
     font-size: 35px;
     text-transform: none;
+
+}
+
+.Social{
+    width:100%;
+    height:100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100%;
+        
+}
+.numero1{
+    background-image: url("../img/1081220.png");
+}
+.socialtext{
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: justify;
+    color: #32b1f5;
+    font-size: 2em;
+    padding: 20%;
+}
+
+.numero2{
+    background-image: url("../img/602575.png");
 }
