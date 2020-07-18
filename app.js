@@ -10,12 +10,13 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
 
 // Connect to mongodb
 
-// const { url } = require('config/database');
+const { url } = require('config/database');
 
-// mongoose.connect(url,{useMongoClient:true});
+mongoose.connect(url,{useMongoClient:true});
 
 require('config/passport')(passport);
 
@@ -39,7 +40,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(passport.initialize);
+app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
@@ -52,7 +53,7 @@ require('routes/router')(app,passport);
 app.use(express.static(path.join(__dirname,'public')));
 
 app.listen(app.get('port'),() =>{
-    // console.log('server on port',app.get('port'));
+    console.log('server on port',app.get('port'));
 });
 
 
