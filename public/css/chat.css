@@ -3,7 +3,37 @@
     padding: 0; 
     box-sizing: border-box; 
 }
-      
+     
+.container{
+    display: flex;
+}
+
+.nick{
+
+    background-color: darkcyan;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    padding: 20%;
+
+}
+
+#houdini{
+    padding: 5px 10px;
+    
+
+}
+.fake-textarea {
+    border: 1px solid black;
+    background: white;  
+    width: 90%;
+    padding: .5rem;
+    min-height: 3rem;
+  }
+  .fake-textarea:empty::before {
+
+    content: "Write here...";
+  }
 
 body { 
     font: 13px Helvetica, Arial; 
@@ -11,7 +41,7 @@ body {
       
 
 form { 
-    background: #000; 
+    background: rgb(110, 110, 110); 
     padding: 3px; 
     position: fixed; 
     bottom: 0; 
@@ -19,18 +49,24 @@ form {
 }
       
 
-form input { 
-    border: 0; 
-    padding: 10px; 
-    width: 90%; 
-    margin-right: 0.5%; 
-}
       
 
-form button {
-    width: 9%; 
-    background: rgb(130, 224, 255); 
-    border: none; padding: 10px; 
+form p{
+    width: 10%;
+    margin-top: 5px;
+    margin-left: 15px;
+    height: 60px;
+    text-align: center;
+    background: red; 
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border: none;
+    border-radius: 0; 
+    padding: 10px;
+}
+
+form a:hover{
+    border-radius: 10px;
 }
       
 
@@ -45,7 +81,8 @@ form button {
     padding: 5px 10px; 
 }
       
+.chat{
+    background-color: darkcyan;
+    color: white;
 
-#messages li:nth-child(odd) { 
-    background: #eee; 
 }
