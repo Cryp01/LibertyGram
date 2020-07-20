@@ -7,4 +7,8 @@ router.get('/', (req, res) =>{
     res.send('index.html');
 });
 
+router.get('/chat', (req,res) =>{
+    res.render('chat');
+});
+
 module.exports = router;
