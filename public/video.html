@@ -12,6 +12,7 @@
     <video src="" id="video" style="width: 800px; height: 600px;"; autoplay="true"></video>
     <canvas id="preview"></canvas>
     <div class="status"></div>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
         var canvas = document.getElementById('preview');
         var context = canvas.getContext('2d');
@@ -25,7 +26,7 @@
 
         var video = document.getElementById('video');
 
-        let socket = io();
+        socket = io();
         
         function mensaje(msg){
             document.getElementsByClassName('status').innerText = msg;
@@ -54,4 +55,5 @@
         })
     </script>
 </body>
+
 </html>

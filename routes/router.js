@@ -10,6 +10,9 @@ router.get('/', (req, res) =>{
 router.get('/chat', (req,res) =>{
     res.redirect('chat.html');
 });
+router.get('/video', (req,res) =>{
+    res.redirect('video.html');
+});
 
 
 module.exports = router;
