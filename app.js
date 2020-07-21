@@ -37,3 +37,8 @@ io.on('connection', (socket) =>{
   })
 })
 
+io.on('connection',(socket)=>{
+  socket.on('stream', (image) =>{
+    socket.broadcast.emit('stream', image)
+  })
+})
