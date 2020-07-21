@@ -26,14 +26,33 @@ const { Socket } = require('dgram');
 const io = sk.listen(server);
 
 //websocket
+let users = [];
+
 io.on('connection', (socket) =>{
-  console.log('new connection');
+  users.push(socket.id);
+  console.log(users);
   socket.on('mensaje', (data)=>{
     console.log(data);
     io.sockets.emit('mensaje', data);
   })
   socket.on('conectado',(data)=>{
-    socket.broadcast.emit('conectado',data);
+    console.log(data.id);
+    io.sockets.emit('conectado',data,users);
+
   })
-})
+  socket.on('disconnect', () => {
+    io.sockets.emit('desconectado',socket.id);
+    
+  
+    for(var i = 0;i < users.length; i++){
+
+      if(users[i] === socket.id){
+  
+        users.pop(i);
+      }
+    }
+    
+  });
+   
+  })
 

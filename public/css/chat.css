@@ -5,13 +5,19 @@
 }
      
 .container{
+    border-radius: 10px;
+    background-color: white;
     margin-top: 10px;
     position: fixed;
+    left: auto;
     bottom: 0;
     height: 10%;
     padding: 1%;
 }
-
+.dropdown{
+    display:flex;
+    align-items: center;
+}
 .nick{
 
     background-color: darkcyan;
@@ -53,6 +59,7 @@ body {
     text-decoration: none;
     border: none;
     border-radius: 0; 
+    margin-right: 2%;
     margin-left: 2%;
 }
 
@@ -169,4 +176,10 @@ form a:hover{
 }
 svg:hover{
     fill: #1b750f;
+}
+.iquielda{
+    background-color: chocolate;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
 }

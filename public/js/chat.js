@@ -8,22 +8,41 @@ const houdini = document.getElementById('houdini');
 let output = document.getElementById('output');
 let nick = document.getElementById('nick');
 let contact = document.getElementById('contact');
+const ids = parseInt(Math.random() * 1000000);
 
 output.style.cssText += "display:none;";
+let users = [];
 
 houdini.addEventListener('click', function(){
   
+  //users
+  let user = new Object();
+  user.id = ids
+  user.nick = nick.value
+  users.push(user);
+
+  //show message box send
   container.style.cssText ="display:flex;";
   document.getElementById('pr').style.cssText = "display:none;";
   m.focus();
 
+
+  //function emit informacion user
+
   socket.emit('conectado', {
-    nick: nick.value
-  })
+    list: users,
+    nick: nick.value,
+    id: socket.id,
+    ids: ids
+  });
+
+  //show message box
   output.style.cssText += "display:block;";
+
+
 });
 
-const ids = parseInt(Math.random() * 1000000);
+
 console.log(ids);
 m.addEventListener('keypress', function(){
 
@@ -72,10 +91,21 @@ socket.on('mensaje', function(data){
   }
  
 })
-socket.on('conectado',function(data){
-    let contacto = document.createElement('li');
-    contacto.setAttribute('class','contacto');
-    contacto.innerText += `${data.nick}`;
+socket.on('conectado',function(data,users){
+    for(var i =0; i < `${users.length}`; i++){
+      
+      if(`${data.id}` != `${users[i]}`){
+        
+        let contacto = document.createElement('li');
+        contacto.setAttribute('class','contacto');
+        contacto.setAttribute('id',`${data.id}`);
+        contacto.innerText += `${data.nick}`;
+        contact.appendChild(contacto);
+      }
+    }
     
-    contact.appendChild(contacto);
+})
+socket.on('desconectado', function(datos){
+  let contactremove = document.getElementById(`${datos}`);
+  contact.removeChild(contactremove);
 })
