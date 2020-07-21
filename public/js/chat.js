@@ -22,20 +22,36 @@ houdini.addEventListener('click', function(){
   
   container.style.cssText ="display:flex;";
   document.getElementById('pr').style.cssText = "display:none;";
+  m.focus();
 });
-
+const ids = parseInt(Math.random() * 1000000);
+console.log(ids);
 btn.addEventListener('click', function(){
   
    socket.emit('mensaje', {
        menssage: m.textContent,
-       name: nick.value
+       name: nick.value,
+       id: ids
    });
 })
   
 socket.on('mensaje', function(data){
-  output.innerHTML +=`<p>
-  
-  <strong>${data.name}</strong>: ${data.menssage}
+  if(ids == data.id){
 
-  </p>`
+    output.innerHTML +=`<div class="recibido">
+    <p class="mensage">
+    
+     ${data.menssage}
+  
+    </p></div>`
+  
+  }else{
+    output.innerHTML +=`<div class="enviado">${data.name}
+    <p class="mensage">
+    
+     ${data.menssage}
+  
+    </p></div>`
+  }
+ 
 })

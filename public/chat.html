@@ -1,10 +1,11 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>chat</title>
    <link rel="stylesheet" href="css/chat.css">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   </head>
   <body>
@@ -14,12 +15,16 @@
 
     
     <div class="nick" id="pr">
-      <input type="text" placeholder="name" id="nick"><button id="houdini" class="btn btn-primary">Save</button>
+      <input type="text" placeholder="name" id="nick" onfocus="on"><button id="houdini" class="btn btn-primary">Save</button>
     </div>
     <ul id="messages"></ul>
     <form>
       <div class="container" id="container">
-      <div id="m" contenteditable class="fake-textarea"></div> <p class="btn btn-secondary" id="btn">send</p></div>
+      <div id="m" contenteditable class="fake-textarea"></div> <p class="btn btn-primary" id="btn">
+        <svg width="100%" height="100%" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z"/>
+        </svg>
+      </p></div>
     </form>
 
 
