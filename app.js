@@ -27,10 +27,13 @@ const io = sk.listen(server);
 
 //websocket
 io.on('connection', (socket) =>{
-  console.log('new connection', socket.id);
+  console.log('new connection');
   socket.on('mensaje', (data)=>{
     console.log(data);
     io.sockets.emit('mensaje', data);
+  })
+  socket.on('conectado',(data)=>{
+    socket.broadcast.emit('conectado',data);
   })
 })
 

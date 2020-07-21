@@ -7,25 +7,38 @@ let btn = document.getElementById('btn');
 const houdini = document.getElementById('houdini');
 let output = document.getElementById('output');
 let nick = document.getElementById('nick');
+let contact = document.getElementById('contact');
 
-
-var responsiveMessage = function(len){
-    if( window.innerWidth < 400){
-      long += 30  
-      m.style.cssText = "height:"+long+"px;";
-    };
- 
-
-};
+output.style.cssText += "display:none;";
 
 houdini.addEventListener('click', function(){
   
   container.style.cssText ="display:flex;";
   document.getElementById('pr').style.cssText = "display:none;";
   m.focus();
+
+  socket.emit('conectado', {
+    nick: nick.value
+  })
+  output.style.cssText += "display:block;";
 });
+
 const ids = parseInt(Math.random() * 1000000);
 console.log(ids);
+m.addEventListener('keypress', function(){
+
+  if(m.textContent.length > 0){
+     if(event.keyCode === 13){
+    socket.emit('mensaje', {
+      menssage: m.textContent,
+      name: nick.value,
+      id: ids
+  });
+  m.textContent = "";
+  }
+ 
+  }
+})
 btn.addEventListener('click', function(){
   
    socket.emit('mensaje', {
@@ -33,25 +46,36 @@ btn.addEventListener('click', function(){
        name: nick.value,
        id: ids
    });
+  m.textContent = "";
 })
   
 socket.on('mensaje', function(data){
   if(ids == data.id){
-
-    output.innerHTML +=`<div class="recibido">
-    <p class="mensage">
     
-     ${data.menssage}
-  
-    </p></div>`
-  
+    let mensaje = document.createElement('div');
+    let pMenssage = document.createElement('p');
+    mensaje.setAttribute('class','recibido');
+    pMenssage.innerText += `${data.menssage}`;
+    mensaje.appendChild(pMenssage);
+    output.appendChild(mensaje);
+    mensaje.focus();
   }else{
-    output.innerHTML +=`<div class="enviado">${data.name}
-    <p class="mensage">
-    
-     ${data.menssage}
-  
-    </p></div>`
+
+    let mensaje = document.createElement('div');
+    let pMenssage = document.createElement('p');
+    mensaje.setAttribute('class','enviado');
+    pMenssage.innerText += `${data.menssage}`;
+    mensaje.innerText += `${data.name}`;
+    mensaje.appendChild(pMenssage);
+    output.appendChild(mensaje);
+    mensaje.focus();
   }
  
+})
+socket.on('conectado',function(data){
+    let contacto = document.createElement('li');
+    contacto.setAttribute('class','contacto');
+    contacto.innerText += `${data.nick}`;
+    
+    contact.appendChild(contacto);
 })
