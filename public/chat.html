@@ -14,9 +14,7 @@
   </head>
   <body>
     <nav class="navbar-expand-lg bg-primary">
-      <p class="logo mt-1">Home</p>
- 
-      
+      <p class="logo mt-1">Chat</p> 
     </nav>
     <div id="sidebar">
       <div class="toggle-btn">
@@ -26,7 +24,7 @@
           <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
         </svg>
       </div>
-      <ul id='contact'>
+      <ul id='contact' class="online-users">
         <li><h2 style="color: white;">User Online</h2></li>
       </ul>
     </div>
@@ -42,18 +40,26 @@
       <input type="text" placeholder="name" id="nick" ><button id="houdini" class="btn btn-primary">Save</button>
     </div>
   
-   
+    
       <div class="container" id="container">
 
       <div id="m" contenteditable class="fake-textarea">
+
       </div>
+      
+
+      <div id="color" class="chat-colors"><input type='text' class="colores" /> </div> 
+
       <p class="boton" id="btn">
 
         <svg width="100%" height="100%" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z"/>
         </svg>
       </p>
-      <div id="color"><input type='text' class="colores" /> </div> 
+    
+    
+
+
       <script>
           $(".colores").spectrum({
               color: "#f00",

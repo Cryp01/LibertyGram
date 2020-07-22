@@ -82,9 +82,12 @@ socket.on('mensaje', function(data){
 
     let mensaje = document.createElement('div');
     let pMenssage = document.createElement('p');
+    let nameMessage = document.createElement('p');
+    nameMessage.setAttribute('class','name-enviado');
     mensaje.setAttribute('class','enviado');
     pMenssage.innerText += `${data.menssage}`;
-    mensaje.innerText += `${data.name}`;
+    nameMessage.innerText += `${data.name}`;
+    mensaje.appendChild(nameMessage);
     mensaje.appendChild(pMenssage);
     output.appendChild(mensaje);
     mensaje.focus();
