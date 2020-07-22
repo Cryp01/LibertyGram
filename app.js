@@ -29,17 +29,12 @@ const io = sk.listen(server);
 io.on('connection', (socket) =>{
   console.log('new connection');
   socket.on('mensaje', (data)=>{
-    console.log(data);
     io.sockets.emit('mensaje', data);
   })
   socket.on('conectado',(data)=>{
     socket.broadcast.emit('conectado',data);
   })
-})
-
-io.on('connection',(socket)=>{
-  socket.on('stream', (image) =>{
-    console.log()
-    socket.broadcast.emit('stream', image,socket.id)
-  })
+  socket.on('streaming',(data)=>{
+      io.sockets.emit('streaming', data);
+  });
 })

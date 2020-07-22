@@ -1,72 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/video.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stream</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Direct</title>
 </head>
 <body>
-    <button id="btn">
-        emitir
-    </button>
-    <div style="width: 40%; height: 30%; background-color: teal;">
-            <video src="" id="video" style="width: 100%; height: 100%;"; autoplay="true"></video>
-    </div>
-    <div style="width: 40%; height: 300px; background-color: teal; margin-top: 10px;">
-        <iframe src="vizualizar.html" style="width: 100%;" height="100%"></iframe>
-    </div>
-    
-  
-    <canvas id="preview" style="display:none;"></canvas>
-    <div class="status"></div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        socket = io();
+    <nav class="navbar navbar-expand-lg bg-primary">
+        <p class="logo mt-1">Video Media</p>
+            <ul class="derecha navbar-nav float-right ml-auto text-align-center">
 
-        var canvas = document.getElementById('preview');
-        var context = canvas.getContext('2d');
-        var btn = document.getElementById('btn');
-        canvas.width = 512;
-        canvas.height = 384;
-
-        context.width = canvas.width;
-        context.height = canvas.height;
-
-        var video = document.getElementById('video');
-
-        
-        function mensaje(msg){
-            document.getElementsByClassName('status').innerText = msg;
-        }
-        
-        function loadcam(stream){
-            video.srcObject = stream;
-            mensaje('camara funcionando');
-        }
-        function errorCam(){
-            mensaje('camara no funcional');
-        }
-        function verVideo(video,content){
-            context.drawImage(video, 0,0,context.width,context.height);
-         
-           socket.emit('stream', document.getElementById('preview').toDataURL('image/webp'));
-        }
-        btn.addEventListener('click', ()=>{
-            navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
-
-            if(navigator.getUserMedia){
-                navigator.getUserMedia({video:true}, loadcam,errorCam)
-            }
-            var intervalo = setInterval(()=>{
-                verVideo(video, context);
-            }, 0)
-        })
-
-
-    </script>
+                <li><button class="btn btn-secondary" id="btn">emitir</button></li> 
+            </ul>
      
-    
-
+    </nav><br><br>
+        <div class="container" id="container">
+            <div class="card">
+                <canvas id="preview"></canvas>
+            </div>
+            
+              
+        </div>
+       <script src="js/video.js"></script>
 </body>
-
 </html>

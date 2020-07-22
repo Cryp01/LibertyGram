@@ -1,0 +1,12 @@
+.derecha{
+    display: inline-block;
+    justify-content: right;
+    background-color: teal;
+}
+.logo{
+    color:white;
+    font-family: 'Coda Caption', sans-serif;
+    font-size: 35px;
+    text-transform: none;
+
+}
