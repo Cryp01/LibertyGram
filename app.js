@@ -4,9 +4,6 @@ const routes = require('./routes/router');
 const path = require('path');
 
 
-
-
-
 //settings
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
@@ -15,7 +12,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended: false}));
 
 app.use('/', routes);
-
 
 var server = app.listen(app.get('port'),() =>{
     console.log("listen port 3000");
@@ -45,9 +41,7 @@ io.on('connection', (socket) =>{
     
   
     for(var i = 0;i < users.length; i++){
-
       if(users[i] === socket.id){
-  
         users.pop(i);
       }
     }
