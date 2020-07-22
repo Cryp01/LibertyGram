@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct</title>
+     <script src="/socket.io/socket.io.js"></script>
+    </script>
+</head>
+<body>
+    <img id="play" src="" alt="">
+    <script>
+        socket = io();
+
+        socket.on('stream', function(image){
+            console.log('astivo');
+            let img = document.getElementById('play');
+            img.src = image;
+        })
+    </script>
+</body>
+
+</html>

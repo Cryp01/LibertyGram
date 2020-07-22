@@ -13,6 +13,9 @@ router.get('/chat', (req,res) =>{
 router.get('/video', (req,res) =>{
     res.redirect('video.html');
 });
+router.get('/stream', (req, res)=>{
+    res.redirect('vizualizar.html');
+})
 
 
 module.exports = router;
