@@ -8,14 +8,28 @@
     </script>
 </head>
 <body>
-    <img id="play" src="" alt="">
+    <div id="container"></div>
     <script>
         socket = io();
+        socket.on('lienzo', function(id){
+           
+         
+        })
+        socket.on('stream', function(image,id){
+            if(document.getElementById(id)){
+                console.log(id);
+                document.getElementById(id).src = image;
+            }else{
+            let com = document.createElement('div');
+            com.setAttribute('id',id);
+            document.getElementById('container').appendChild(com)
+            let img = document.createElement('img');
+            img.setAttribute('id',id);
+            img.setAttribute('src',image);
+            com.appendChild(img);
 
-        socket.on('stream', function(image){
-            console.log('astivo');
-            let img = document.getElementById('play');
-            img.src = image;
+            }
+         
         })
     </script>
 </body>

@@ -21,6 +21,8 @@
     <div class="status"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        socket = io();
+
         var canvas = document.getElementById('preview');
         var context = canvas.getContext('2d');
         var btn = document.getElementById('btn');
@@ -33,7 +35,6 @@
 
         var video = document.getElementById('video');
 
-        socket = io();
         
         function mensaje(msg){
             document.getElementsByClassName('status').innerText = msg;
@@ -59,9 +60,8 @@
             }
             var intervalo = setInterval(()=>{
                 verVideo(video, context);
-            }, 30)
+            }, 0)
         })
-        socket = io();
 
 
     </script>
