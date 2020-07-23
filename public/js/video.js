@@ -6,6 +6,8 @@ const video  = document.createElement('video');
 const lienzo = document.getElementById('preview'); 
 const context = lienzo.getContext('2d');
 
+context.width = 300;
+context.height = 150;
 
 //config elementos
 video.setAttribute('src','""');
@@ -22,7 +24,7 @@ function errCam(){
     console.log('error camara');
 }
 function emitir(video,context){
-    context.drawImage(video,0,0,1280,720);
+    context.drawImage(video,0,0,context.width,context.height);
 
     socket.emit('streaming',{
         image: document.getElementById('preview').toDataURL('image/webp'),
@@ -38,7 +40,7 @@ btn.addEventListener('click', () =>{
     }
     var delay = setInterval(() =>{
         emitir(video,context);
-    })
+    }, 0)
 });
 
 socket.on('streaming', (data) =>{
@@ -52,6 +54,7 @@ socket.on('streaming', (data) =>{
             document.getElementById('container').appendChild(receptor);
             img.setAttribute('src','');
             img.setAttribute('id','play2');
+            img.style.cssText ="height:100%"
             receptor.appendChild(img);   
         }
            document.getElementById('play2').src = `${data.image}`
@@ -66,6 +69,7 @@ socket.on('streaming', (data) =>{
             let img2 = document.createElement('img');
             img2.setAttribute('src','');
             img2.setAttribute('id','play1');
+            
             emisor.appendChild(img2);
         }
     

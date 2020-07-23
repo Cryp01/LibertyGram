@@ -10,3 +10,18 @@
     text-transform: none;
 
 }
+.container2{
+    background-color: teal;
+    width: 50%;
+    height: 700px;
+}
+.card{
+    height: 50%;
+    width: 100%;
+}
+@media (max-height:700px){
+    .container2{
+        height: 500px;
+        width: 100%;
+    }
+}
