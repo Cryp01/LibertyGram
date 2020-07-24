@@ -69,7 +69,7 @@ socket.on('streaming', (data) =>{
             let img2 = document.createElement('img');
             img2.setAttribute('src','');
             img2.setAttribute('id','play1');
-            
+            img2.style.cssText ="height:100%"
             emisor.appendChild(img2);
         }
     
