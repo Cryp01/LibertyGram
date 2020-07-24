@@ -54,7 +54,7 @@ socket.on('streaming', (data) =>{
             document.getElementById('container').appendChild(receptor);
             img.setAttribute('src','');
             img.setAttribute('id','play2');
-            img.style.cssText ="height:100%"
+            img.style.cssText ="height:100%";
             receptor.appendChild(img);   
         }
            document.getElementById('play2').src = `${data.image}`
@@ -69,7 +69,7 @@ socket.on('streaming', (data) =>{
             let img2 = document.createElement('img');
             img2.setAttribute('src','');
             img2.setAttribute('id','play1');
-            img2.style.cssText ="height:100%"
+            img2.style.cssText ="height:100%";
             emisor.appendChild(img2);
         }
     
