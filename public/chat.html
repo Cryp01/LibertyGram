@@ -1,98 +1,104 @@
-<!doctype html>
-<html>
-  <head>
-    <title>chat</title>
-   <link rel="stylesheet" href="css/chat.css">
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="jquery-2.1.4.min.js"></script>
-    <script src='spectrum.js'></script>
-    <link rel='stylesheet' href='spectrum.css' />
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Normalize -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/chat.css">
+    <title>LibertyGram - Chat</title>
+</head>
+
+<body>
     
- 
-  </head>
-  <body>
-    <nav class="navbar-expand-lg bg-primary">
-      <p class="logo mt-1">Chat</p> 
-    </nav>
-    <div id="sidebar">
-      <div class="toggle-btn">
-        <svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
-          <path d="M13.784 14c-.497-1.27-1.988-3-5.784-3s-5.287 1.73-5.784 3h11.568z"/>
-          <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-        </svg>
-      </div>
-      <ul id='contact' class="online-users">
-        <li><h2 style="color: white;">User Online</h2></li>
-      </ul>
-    </div>
+    <main class="chat">
+        <div class="nav bg-blue">
+            <img id="open" src="img/open.png" alt="open">
+        </div>
 
-    <script src="js/slide.js"></script>
+        <div class="on">
+            <h2 class="semi-bold blue">USER ONLINE</h2>
+            <hr class="line">
+            <div class="cont-user">
+                <div class="userOn medium black">
+                    <img src="img/on.png" alt="on">
+                    <p>Malone</p>
+                </div>
+                <div class="userOn medium black">
+                    <img src="img/on.png" alt="on">
+                    <p>Jessica</p>
+                </div>
+                <div class="userOn medium black">
+                    <img src="img/on.png" alt="on">
+                    <p>Antoine</p>
+                </div>
+                <div class="userOn medium black">
+                    <img src="img/on.png" alt="on">
+                    <p>Marc</p>
+                </div>
+                <div class="userOn medium black">
+                    <img src="img/on.png" alt="on">
+                    <p>Kevin</p>
+                </div>
+                <div class="userOn medium black">
+                    <img src="img/on.png" alt="on">
+                    <p>Gerard</p>
+                </div>
+            </div>
+            <div class="cont-dark">
+                <h3 class="medium black">Dark Mode</h3>
+                <div class="circle dark"></div>
+            </div>
+        </div>
 
-    <div id="output" class="chat">
-     
-    </div>
+        <div class="col-2">
+            <div class="cont-chat">
+                <div class="msg received">
+                    <p class="message received">Hi, Jessica.</p>
+                </div>
+                <div class="msg sent">
+                    <p class="message sent">Hi, Kevin. How are u?</p>
+                </div>
+                <div class="msg received">
+                    <p class="message received">I’m fine. thanks</p>
+                </div>
+                <div class="msg sent">
+                    <p class="message sent">Tell me about you, Kevin</p>
+                </div>
+                <div class="msg sent">
+                    <p class="message sent">Where’re you now?</p>
+                </div>
+                <div class="msg received">
+                    <p class="message received">I’m at Marc’s</p>
+                </div>
+                <div class="msg received">
+                    <p class="message received">I’m helping him with his homework</p>
+                </div>
+                <div class="msg sent">
+                    <p class="message sent">Ohh nice, can you call me back when you finish with him, pls.</p>
+                </div>
+                <div class="msg received">
+                    <p class="message received">Ok, sure!</p>
+                </div>
+            </div>
+            
+            <form id="form">
+                <hr class="line" >
+                <div class="cont-form">
+                    <input id="msg" class="input medium black" placeholder="Write here..." autocomplete="off" type="text" required/>
+                    <input class="send" type="image" src="img/send.png">
+                </div>
+            </form>
+        </div>
+    </main>
 
-    
-    <div class="nick" id="pr">
-      <input type="text" placeholder="name" id="nick" ><button id="houdini" class="btn btn-primary">Save</button>
-    </div>
-  
-    
-      <div class="container" id="container">
+    <!-- Javascript -->
+    <script src="js/script.js"></script>
 
-      <div id="m" contenteditable class="fake-textarea">
-
-      </div>
-      
-
-      <div id="color" class="chat-colors"><input type='text' class="colores" /> </div> 
-
-      <p class="boton" id="btn">
-
-        <svg width="100%" height="100%" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-8.354 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L9.793 7.5H5a.5.5 0 0 0 0 1h4.793l-2.147 2.146z"/>
-        </svg>
-      </p>
-    
-    
-
-
-      <script>
-          $(".colores").spectrum({
-              color: "#f00",
-             
-              change: function(color) {
-                  //alert(color.toHexString());
-                 $('body').css("background-color",color.toHexString());
-              }
-          });
-              </script>
-    </div>
-
-
-     
-   
-  </body>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="js/chat.js"></script>
-
-
-
-
-
-
-
-
-
-
-    
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
+</body>
 </html>
