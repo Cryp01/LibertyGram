@@ -1,58 +1,74 @@
+const express = require('express');
+const router = express.Router();
+const path = require('path');
+const passport = require('passport');
 
-module.exports = (app,passport,flash) => {
+module.exports = (app, passport) => {
+
     app.get('/', (req, res) =>{
-        res.redirect('index.html');
+        res.render('../views/index.html');
     });
     
-    app.get('/chat', (req,res) =>{
-        res.redirect('chat.html');
+    app.get('/login', (req, res) =>{
+        res.render('login', {
+            message: req.flash('loginMessage')
+        });
+
     });
     
-   //login view
-	app.get('/login', (req, res) => {
-		res.render('login.ejs', {
-			message: req.flash('loginMessage')
-		});
-	});
+  app.get('/auth/google',
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
 
-	app.post('/login', passport.authenticate('local-login', {
-		successRedirect: '/profile',
-		failureRedirect: '/login',
-		failureFlash: true
-	}));
+  
+  app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
 
-	// signup view
-	app.get('/signup', (req, res) => {
-		res.render('signup', {
-			message: req.flash('signupMessage')
-		});
-	});
+  function(req, res) {
+    console.log('llegue');
+    res.send('mmg');
 
-	app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect: '/profile',
-		failureRedirect: '/signup',
-		failureFlash: true // allow flash messages
-	}));
+  });
 
-	//profile view
-	app.get('/profile', isLoggedIn, (req, res) => {
-		res.render('profile', {
-			user: req.user
-		});
-	});
+ 
 
-	// logout
-	app.get('/logout', (req, res) => {
-		req.logout();
-		res.redirect('/');
-	});
+    app.post('/login', passport.authenticate('local-login', {
+        sucessRedirect: '/profile',
+        failureRedirect: '/login',
+        failureFlash: true
+    }));
+
+    app.get('/signup', (req, res) =>{
+        res.render('../views/signup.html',{
+            message: req.flash('signupMessage')
+        });
+    });
+    
+    app.post('/signup', passport.authenticate('local-signup', {
+        sucessRedirect: '/profile',
+        failureRedirect: '/signup',
+        failureFlash: true
+    }));
+
+    app.get('/profile', (req, res) => {
+        res.render('../views/profile.html', {
+            user: req.user
+        });
+    });
+
+    app.get('/logout', (req, res) => {
+        req.logout();
+        res.redirect('/');
+    });
+
 };
-function isLoggedIn (req, res, next) {
-	if (req.isAuthenticated()) {
-		return next();
+
+function isLoggedIn(req, res, next){
+    if (req.isAuthenticated()){
+        return next();
     }
+    return res.redirect('/');
 }
 
 
 
-
+// module.exports = router;

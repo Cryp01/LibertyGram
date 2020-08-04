@@ -11,6 +11,30 @@
 
 </head>
 <body class="login">
+  
+<script>
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{884544232070914}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{v7.0}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
     <div class="container">
       <div class="col-sm-6 mx-auto">
         <div class="card mt-5">
@@ -36,8 +60,11 @@
                 <input type="password" name="password" class="form-control">
               </div>
               <input type="submit" class="btn btn-dark btn-lg">
-            </form>
-
+              
+            </form><br><br>
+          <form action="/auth/google" method="get">
+                <input type="submit" value="Google">
+              </form>
             <hr>
             <div class="text-center">
               <p>Need an account? <a href="/signup">Signup</a></p>
