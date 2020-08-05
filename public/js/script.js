@@ -39,7 +39,7 @@
         const btnDark = document.querySelector('.circle')
         btnDark.addEventListener('click',()=>{
 
-            document.querySelector('.on').classList.toggle('bg-darkBlue')
+            document.querySelector('.on').classList.toggle('bg-darkGray')
             
             document.querySelector('.nav').classList.toggle('bg-darkBlue')
             document.querySelector('.on h2').classList.toggle('white')
