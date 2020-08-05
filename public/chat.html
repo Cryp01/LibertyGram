@@ -25,7 +25,7 @@
             <h2 class="semi-bold blue">USER ONLINE</h2>
             <hr class="line">
             <div class="cont-user">
-                <div class="userOn medium black">
+                <!-- <div class="userOn medium black" id="contUser">
                     <img src="img/on.png" alt="on">
                     <p>Malone</p>
                 </div>
@@ -48,7 +48,7 @@
                 <div class="userOn medium black">
                     <img src="img/on.png" alt="on">
                     <p>Gerard</p>
-                </div>
+                </div> -->
             </div>
             <div class="cont-dark">
                 <h3 class="medium black">Dark Mode</h3>
@@ -57,40 +57,14 @@
         </div>
 
         <div class="col-2">
-            <div class="cont-chat">
-                <div class="msg received">
-                    <p class="message received">Hi, Jessica.</p>
-                </div>
-                <div class="msg sent">
-                    <p class="message sent">Hi, Kevin. How are u?</p>
-                </div>
-                <div class="msg received">
-                    <p class="message received">I’m fine. thanks</p>
-                </div>
-                <div class="msg sent">
-                    <p class="message sent">Tell me about you, Kevin</p>
-                </div>
-                <div class="msg sent">
-                    <p class="message sent">Where’re you now?</p>
-                </div>
-                <div class="msg received">
-                    <p class="message received">I’m at Marc’s</p>
-                </div>
-                <div class="msg received">
-                    <p class="message received">I’m helping him with his homework</p>
-                </div>
-                <div class="msg sent">
-                    <p class="message sent">Ohh nice, can you call me back when you finish with him, pls.</p>
-                </div>
-                <div class="msg received">
-                    <p class="message received">Ok, sure!</p>
-                </div>
+            <div class="cont-chat" id="output">
+                
             </div>
             
             <form id="form">
                 <hr class="line" >
                 <div class="cont-form">
-                    <input id="msg" class="input medium black" placeholder="Write here..." autocomplete="off" type="text" required/>
+                    <input id="input" class="input medium black" placeholder="Write here..." autocomplete="off" type="text" required/>
                     <input class="send" type="image" src="img/send.png">
                 </div>
             </form>
@@ -99,6 +73,28 @@
 
     <!-- Javascript -->
     <script src="js/script.js"></script>
+    
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+    <script src="js/chat.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 </body>
 </html>

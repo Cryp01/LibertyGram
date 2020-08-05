@@ -1,7 +1,7 @@
 (function(){
     'use strict';
     document.addEventListener('DOMContentLoaded',function(){
-        console.log('Ready!!');
+        // console.log('Ready!!');
 
         // HandleOpen
         const open = document.getElementById('open');
@@ -16,24 +16,24 @@
         })
 
         // HandleChat
-        const form = document.getElementById('form')
-        form.addEventListener('submit',(e)=>{
-            e.preventDefault()
+        // const form = document.getElementById('form')
+        // form.addEventListener('submit',(e)=>{
+        //     e.preventDefault()
 
-            const input = document.getElementById('msg').value
+        //     const input = document.getElementById('msg').value
             
-            const contChat = document.querySelector('.cont-chat')
-            const msg = document.createElement('div')
-            msg.innerHTML =
-            `
-            <div class="msg sent">
-                <p class="message sent">${input}</p>
-            </div>
-            `
+        //     const contChat = document.querySelector('.cont-chat')
+        //     const msg = document.createElement('div')
+        //     msg.innerHTML =
+        //     `
+        //     <div class="msg sent">
+        //         <p class="message sent">${input}</p>
+        //     </div>
+        //     `
 
-            contChat.appendChild(msg)
-            form.reset()
-        })
+        //     contChat.appendChild(msg)
+        //     form.reset()
+        // })
 
         // HandleDark
         const btnDark = document.querySelector('.circle')
