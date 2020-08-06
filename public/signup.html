@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+
+</head>
+<body>
+
+    <div class="container col-md-4 row-md-4">
+        <div class="card">
+        <center><h1>Register :D mmg</h1> </center>
+        <form action="/signup" method="POST">
+           
+        <input type="text" name="username" placeholder="Username" class="form-control" required><br>
+        <input type="password" name="Password" placeholder="Password" class="form-control" required><br>
+        <input type="email" name="Email"    placeholder="Email" class="form-control" required><br>
+        <label for="file"  style="width:39.6%; color: black;">Add profile image</label>
+        <input type="file" id="img-uploader" class="btn btn-success" style="width: 70;" required><br>
+        <img src="" id="preview" width="50" height="50" style="display: none;">
+        <input type="submit" class="btn btn-dark btn-lg"  style="width: 100%;" >
+        <progress id="img-upload-bar" value="0" max="100" style="width: 100%" class="progress-bar progress-bar-striped progress-bar-animated" Role="progressbar"></progress>
+    </form>
+       <a href="/public/signin.html" class="btn btn-primary">signin</a>
+
+    </div>
+  </div>
+
+</body>
+<script src="js/users.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+</html>

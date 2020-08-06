@@ -1,32 +1,23 @@
 const express = require('express');
 const app = express();
-
 const path = require('path');
-const mongoose = require('mongoose');
-
-const passport = require('passport');
 const cookie = require('cookie-parser');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const flash = require('connect-flash');
+const mysql = require('mysql');
+const myConnection = require('express-myconnection');
+const customerRouters = require('./routes/router');
 
-//database
-const {url} = require('./config/database');
-mongoose.connect(url,{
-useNewUrlParser: true,
-useUnifiedTopology:true
-});
-
-require('./config/passport')(passport);
 
 //settings
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
-
 app.set('views',path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
+
+
 
 //middleware
 app.use(morgan('dev'));
@@ -36,18 +27,24 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+app.use('/', customerRouters);
 
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+//database
+app.use(myConnection(mysql, {
+  host: 'bhjdusff6loqla1kyxrl-mysql.services.clever-cloud.com',
+  user: 'uqzwrwuayb8le8th',
+  password: 'ePYiL2Gq75LKIcAFsEmh',
+  port: 3306,
+  database:'bhjdusff6loqla1kyxrl'
+}, 'single'));
 
 
-require('./routes/router')(app,passport,flash);
-
+//Server
 var server = app.listen(app.get('port'),() =>{
     console.log("listen port 3000");
 });
+
 
 
 //socket io
@@ -61,27 +58,19 @@ const io = sk.listen(server);
 let users = [];
 io.on('connection', (socket) =>{
   users.push(socket.id);
- 
-  socket.on('mensaje', (data)=>{
-    
+  socket.on('mensaje', (data)=>{ 
     io.sockets.emit('mensaje', data);
   })
   socket.on('conectado',(data)=>{
-
     io.sockets.emit('conectado',data,users);
-
   })
   socket.on('disconnect', () => {
     io.sockets.emit('desconectado',socket.id);
-    
-  
     for(var i = 0;i < users.length; i++){
       if(users[i] === socket.id){
         users.pop(i);
       }
     }
-    
   });
-   
 })
 
