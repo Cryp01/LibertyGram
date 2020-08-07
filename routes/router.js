@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const routes = require('../controller/customerController');
+const customerController = require('../controller/customerController');
 
 router.get('/', (req,res) =>{
     res.redirect('index.html');
@@ -13,5 +13,9 @@ router.get('/signin', (req, res)=>{
 router.get('/signup', (req, res)=>{
     res.redirect('signup.html')
 });
+
+router.post('/signup', customerController.signup);
+
+router.get('/profile', customerController.profile);
 
 module.exports = router;

@@ -27,7 +27,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
-app.use('/', customerRouters);
+
 
 
 //database
@@ -38,7 +38,7 @@ app.use(myConnection(mysql, {
   port: 3306,
   database:'bhjdusff6loqla1kyxrl'
 }, 'single'));
-
+app.use('/', customerRouters);
 
 //Server
 var server = app.listen(app.get('port'),() =>{

@@ -15,10 +15,12 @@
         <center><h1>Register :D mmg</h1> </center>
         <form action="/signup" method="POST">
            
-        <input type="text" name="username" placeholder="Username" class="form-control" required><br>
+        <input type="text" name="Username" placeholder="Username" class="form-control" required><br>
         <input type="password" name="Password" placeholder="Password" class="form-control" required><br>
         <input type="email" name="Email"    placeholder="Email" class="form-control" required><br>
         <label for="file"  style="width:39.6%; color: black;">Add profile image</label>
+        <input type="text" style="display: none;" id="photo" name="Photo">
+        <input type="text" style="display: none;" id="ID" name="ID" >
         <input type="file" id="img-uploader" class="btn btn-success" style="width: 70;" required><br>
         <img src="" id="preview" width="50" height="50" style="display: none;">
         <input type="submit" class="btn btn-dark btn-lg"  style="width: 100%;" >
