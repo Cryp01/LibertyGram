@@ -18,12 +18,11 @@ app.set('views',path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
 
-
-
 //middleware
 
 app.use(morgan('dev'));
 app.use(cookie());
+app.use(bodyParser.json());
 app.use(session({
   'secret': 'Mugiwara',
   resave: false,
@@ -40,24 +39,6 @@ app.use(myConnection(mysql, {
 }, 'single'));
 app.use('/', customerRouters);
 
-passport.use(new FacebookStrategy({
-  clientID: '884544232070914',
-  clientSecret: 'ce7aaf3146a043bc317611c51976500a',
-  callbackURL: "/profile",
-},
-function(accessToken, refreshToken, profile, done) {
-  User.findOrCreate( function(err, user) {
-    if (err) { return done(err); }
-    done(null, user);
-    var newUser = new User()
-    newUser.provider_id = profile.id
-    newUser.name = profile.displayName
-    newUser.photo = profile.photos[0].value
-    newUser.provider = 'facebook'
-
-  });
-}));
-  
 //Server
 var server = app.listen(app.get('port'),() =>{
     console.log("listen port 3000");

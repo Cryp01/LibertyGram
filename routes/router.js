@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const customerController = require('../controller/customerController');
-const passport = require('passport')
+const { authenticate } = require('passport');
+var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
 
 router.get('/', (req,res) =>{
@@ -19,20 +20,6 @@ router.get('/signup', (req, res)=>{
 router.get('/profile', (req, res)=>{
     res.render("profile")
 });
-
-router.get('/auth/facebook', passport.authenticate('facebook'));
-
-router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/signup' }));
-
-router.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: 'read_stream' })
-);
-
-router.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
-);
 
 router.post('/signup', customerController.signup);
 
