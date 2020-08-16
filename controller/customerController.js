@@ -1,4 +1,6 @@
 const { route } = require("../routes/router");
+const router = require("../routes/router");
+const { json } = require("body-parser");
 
 const controller = {};
 
@@ -25,5 +27,26 @@ controller.profile = (req,res) =>{
         });
     });
 }
+controller.signin = (req,res) =>{
+    let data = req.body;
+  
+    req.getConnection((err,conn) =>{
+        conn.query('select * from login where Username =? ', data.Username, (err,router) =>{
+            if(router[0].Username == data.Username && router[0].Password == data.Password){
+             req.session.User = router[0];
+                res.redirect('/profile');
+            }else{
+               res.render('signin',{
+                data: 'Data does not match Please check your credentials and try again'
+
+               });
+                
+           
+            } 
+        }); 
+ 
+    });
+}
+
 
 module.exports = controller;

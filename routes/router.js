@@ -7,7 +7,7 @@ router.get('/', (req,res) =>{
 });
 
 router.get('/signin', (req, res)=>{
-    res.redirect('signin.html')
+    res.render('signin');
 });
 
 router.get('/signup', (req, res)=>{
@@ -17,5 +17,7 @@ router.get('/signup', (req, res)=>{
 router.post('/signup', customerController.signup);
 
 router.get('/profile', customerController.profile);
+
+router.post('/signin',customerController.signin);
 
 module.exports = router;
