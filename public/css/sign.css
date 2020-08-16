@@ -1,0 +1,27 @@
+.form-control{
+    margin-bottom: -10px;
+}
+div .card{
+    margin-top: 5em;
+}
+
+h1{
+    margin-top: 10px;
+}
+input[type="file"]{
+    Display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 0;
+}
+
+label{
+    background-color: #3ac871;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
