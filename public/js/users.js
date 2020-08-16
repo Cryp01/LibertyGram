@@ -1,5 +1,5 @@
 
-console.log('astivo');
+console.log('activo');
 const imageUploader = document.getElementById('img-uploader');
 const imageUploadbar = document.getElementById('img-upload-bar');
 const preview = document.getElementById('preview');

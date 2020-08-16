@@ -8,7 +8,8 @@ const session = require('express-session');
 const mysql = require('mysql');
 const myConnection = require('express-myconnection');
 const customerRouters = require('./routes/router');
-
+const passport = require('passport')
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 //settings
 app.set('port', process.env.PORT || 3000);
@@ -20,15 +21,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 //middleware
+
 app.use(morgan('dev'));
 app.use(cookie());
 app.use(session({
   'secret': 'Mugiwara',
   resave: false,
   saveUninitialized: false
-}));
-
-
+}))
 
 //database
 app.use(myConnection(mysql, {
@@ -40,10 +40,29 @@ app.use(myConnection(mysql, {
 }, 'single'));
 app.use('/', customerRouters);
 
+passport.use(new FacebookStrategy({
+  clientID: '884544232070914',
+  clientSecret: 'ce7aaf3146a043bc317611c51976500a',
+  callbackURL: "/profile",
+},
+function(accessToken, refreshToken, profile, done) {
+  User.findOrCreate( function(err, user) {
+    if (err) { return done(err); }
+    done(null, user);
+    var newUser = new User()
+    newUser.provider_id = profile.id
+    newUser.name = profile.displayName
+    newUser.photo = profile.photos[0].value
+    newUser.provider = 'facebook'
+
+  });
+}));
+  
 //Server
 var server = app.listen(app.get('port'),() =>{
     console.log("listen port 3000");
 });
+
 
 
 

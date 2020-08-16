@@ -4,14 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"    rel="stylesheet">
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
     <link rel="stylesheet" href="css/sign.css">
-
+    
 </head>
 <body>
+    <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '884544232070914',
+            xfbml      : true,
+            version    : 'v8.0'
+          });
+          FB.AppEvents.logPageView();
+        };
+      
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
 
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+      </script>
+    
     <div class="container col-md-4">
         <div class="card">
         <center><h1>Register Now</h1> </center>
@@ -35,9 +58,11 @@
         <progress id="img-upload-bar" value="0" max="100" style="width: 100%" class="progress-bar progress-bar-striped progress-bar-animated" Role="progressbar"></progress>
     </form>
        <a href="/public/signin.html" class="btn btn-primary">signin</a>
-
+       <a href="/auth/facebook"  id="login" class="btn btn-primary">Login with facebook</a>
     </div>
   </div>
+
+  </script>
 
 </body>
 <script src="js/users.js"></script>
