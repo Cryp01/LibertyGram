@@ -63,9 +63,6 @@ var server = app.listen(app.get('port'),() =>{
     console.log("listen port 3000");
 });
 
-
-
-
 //socket io
 const sk = require('socket.io');
 const { Socket } = require('dgram');
